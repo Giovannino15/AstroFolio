@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+/* --- Animación para texto (ya tenés esto bien) --- */
+/* ... tus keyframes ... */
+
+/* 🔥 Ocultamos el cursor nativo */
+body {
+    cursor: none;
+}
+
+/* 🎯 Cursor normal (cuando no es enlace o botón) */
+#custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 2rem;
+    height: 2rem;
+    pointer-events: none;
+    opacity: 1;
+    z-index: 9999;
+    background: url('/assets/cursors/glitch_cursor_arrow.png') no-repeat center center;
+    background-size: contain;
+    transition: transform 0.05s ease, opacity 0.2s ease;
+    mix-blend-mode: difference;
+}
+
+#custom-cursor.clicked {
+    transform: scale(0.8);
+    filter: brightness(1.5);
+}
+
+/* 🖱️ Cursor para links/botones (si querés cambiar visualmente al hacer hover) */
+a:hover #custom-cursor,
+button:hover #custom-cursor {
+    background-image: url('/assets/cursors/glitch_cursor_click.png');
+}
