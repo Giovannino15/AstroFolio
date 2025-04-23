@@ -7,7 +7,7 @@ import vue from '@astrojs/vue';
 
 // https://astro.build/config
 export default defineConfig({
-    base: '/personalWeb/',
+    base: '/AstroFolio/',
     trailingSlash: 'always',
     vite: {
         plugins: [tailwindcss()]
