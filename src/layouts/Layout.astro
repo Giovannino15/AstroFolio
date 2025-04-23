@@ -3,71 +3,71 @@ import "../styles/global.css";
 ---
 
 <script>
-	document.addEventListener("DOMContentLoaded", () => {
-		const cursor = document.getElementById("custom-cursor");
+	// document.addEventListener("DOMContentLoaded", () => {
+	// 	const cursor = document.getElementById("custom-cursor");
 
-		if (!cursor) return; // sale si no existe
+	// 	if (!cursor) return; // sale si no existe
 
-		let mouseX = 0,
-			mouseY = 0;
-		let cursorX = 0,
-			cursorY = 0;
+	// 	let mouseX = 0,
+	// 		mouseY = 0;
+	// 	let cursorX = 0,
+	// 		cursorY = 0;
 
-		document.addEventListener("mousemove", (e) => {
-			mouseX = e.clientX;
-			mouseY = e.clientY;
-		});
+	// 	document.addEventListener("mousemove", (e) => {
+	// 		mouseX = e.clientX;
+	// 		mouseY = e.clientY;
+	// 	});
 
-		function animateCursor() {
-			cursorX += (mouseX - cursorX) * 0.2;
-			cursorY += (mouseY - cursorY) * 0.2;
-			cursor!.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
-			requestAnimationFrame(animateCursor);
-		}
+	// 	function animateCursor() {
+	// 		cursorX += (mouseX - cursorX) * 0.2;
+	// 		cursorY += (mouseY - cursorY) * 0.2;
+	// 		cursor!.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+	// 		requestAnimationFrame(animateCursor);
+	// 	}
 
-		animateCursor();
+	// 	animateCursor();
 
-		document.addEventListener("mousedown", () => {
-			cursor.classList.add("clicked");
-			cursor.style.backgroundImage =
-				"url('/AstroFolio/assets/cursors/glitch_cursor_click.png')";
-		});
-		document.addEventListener("mouseup", () => {
-			cursor.classList.remove("clicked");
-			cursor.style.backgroundImage =
-				"url('/AstroFolio/assets/cursors/glitch_cursor_arrow.png')";
-		});
+	// 	document.addEventListener("mousedown", () => {
+	// 		cursor.classList.add("clicked");
+	// 		cursor.style.backgroundImage =
+	// 			"url('/AstroFolio/assets/cursors/glitch_cursor_click.png')";
+	// 	});
+	// 	document.addEventListener("mouseup", () => {
+	// 		cursor.classList.remove("clicked");
+	// 		cursor.style.backgroundImage =
+	// 			"url('/AstroFolio/assets/cursors/glitch_cursor_arrow.png')";
+	// 	});
 
-		const links = document.querySelectorAll("a, button");
-		links.forEach((el) => {
-			el.addEventListener("mouseenter", () => {
-				cursor.style.backgroundImage =
-					"url('/AstroFolio/assets/cursors/glitch_cursor_click.png')";
-			});
-			el.addEventListener("mouseleave", () => {
-				cursor.style.backgroundImage =
-					"url('/AstroFolio/assets/cursors/glitch_cursor_arrow.png')";
-			});
-		});
+	// 	const links = document.querySelectorAll("a, button");
+	// 	links.forEach((el) => {
+	// 		el.addEventListener("mouseenter", () => {
+	// 			cursor.style.backgroundImage =
+	// 				"url('/AstroFolio/assets/cursors/glitch_cursor_click.png')";
+	// 		});
+	// 		el.addEventListener("mouseleave", () => {
+	// 			cursor.style.backgroundImage =
+	// 				"url('/AstroFolio/assets/cursors/glitch_cursor_arrow.png')";
+	// 		});
+	// 	});
 
-		document.addEventListener("mouseleave", () => {
-			cursor.style.opacity = "0";
-		});
-		document.addEventListener("mouseenter", () => {
-			cursor.style.opacity = "1";
-		});
+	// 	document.addEventListener("mouseleave", () => {
+	// 		cursor.style.opacity = "0";
+	// 	});
+	// 	document.addEventListener("mouseenter", () => {
+	// 		cursor.style.opacity = "1";
+	// 	});
 
-		const iframes = document.querySelectorAll("iframe.figma-embed");
+	// 	const iframes = document.querySelectorAll("iframe.figma-embed");
 
-		iframes.forEach((frame) => {
-			frame.addEventListener("mouseenter", () => {
-				cursor.style.opacity = "0";
-			});
-			frame.addEventListener("mouseleave", () => {
-				cursor.style.opacity = "1";
-			});
-		});
-	});
+	// 	iframes.forEach((frame) => {
+	// 		frame.addEventListener("mouseenter", () => {
+	// 			cursor.style.opacity = "0";
+	// 		});
+	// 		frame.addEventListener("mouseleave", () => {
+	// 			cursor.style.opacity = "1";
+	// 		});
+	// 	});
+	// });
 </script>
 
 <html lang="en">
