@@ -1,36 +1,40 @@
-name: Deploy Astro site to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
-  # Esto corre cuando haces push a la rama main
+  # Se ejecuta cada vez que haces push a la rama main
   push:
     branches: [main]
-
-  # Permite correrlo manualmente desde Actions
+  # Te permite ejecutarlo manualmente desde la pestaña Actions
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout your repository using git
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+      - name: Install, build, and upload your site
+        uses: withastro/action@v2
+        # with:
+        # path: . # Descomenta esto si tu proyecto astro no está en la raíz del repo
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build the site
-        run: |
-          npm run build
-          echo "" > dist/.nojekyll
-
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: gh-pages
+        id: deployment
+        uses: actions/deploy-pages@v4
