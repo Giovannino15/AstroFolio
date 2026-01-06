@@ -5,7 +5,7 @@ import vue from '@astrojs/vue';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://Giovannino15.github.io',
+    site: 'https://Giovannino15.github.io/AstroFolio/',
     base: '/AstroFolio/',
     trailingSlash: 'always',
     vite: {
